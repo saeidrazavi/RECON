@@ -1,0 +1,37 @@
+[project]
+name = "recon"
+version = "0.1.0"
+description = "RECON: diffusion transformers with representation alignment and semantic tokens"
+requires-python = ">=3.10"
+dependencies = [
+    "torch==2.10.0",
+    "torchvision==0.25.0",
+    "datasets==4.4.2",
+    "diffusers==0.37.0",
+    "transformers==5.3.0",
+    "timm==1.0.25",
+    "tqdm==4.67.3",
+    "accelerate==1.13.0",
+    "scipy==1.15.3",
+    "torch-fidelity==0.4.0",
+    "einops==0.8.2",
+    "clip @ git+https://github.com/openai/CLIP.git",
+    "wandb>=0.26.1",
+    "webdataset==1.0.2",
+    # torch.compile builds CPU kernels through torch.utils.cpp_extension, which imports setuptools
+    # (torch lists setuptools as a dependency only for Python >= 3.12)
+    "setuptools==80.9.0",
+    # imported by the local DINOv3 torch.hub repo (dinov3-* teachers), which is not pip-installed
+    "torchmetrics>=1.9.0",
+    "termcolor>=3.3.0",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu128" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

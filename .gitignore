@@ -1,0 +1,16 @@
+*.DS_Store
+.vscode/
+/data
+**/__pycache__/
+**/exps/**
+!**/exps/**/
+!**/exps/**/*.csv
+**/logs/
+**/wandb/
+**/checkpoints/
+**/samples/
+**/results/
+*.log
+.venv
+pretrained_models
+/dinov3
